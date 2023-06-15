@@ -1,0 +1,53 @@
+<%- include('./partials/header'); -%>
+<div class="container">
+  <div class="row mt-2">
+    <div class="card">
+      <div class="card-header"><h2>Clientes Nuevos</h2></div>
+      <div class="card-body">
+        <form action="/upDateCliente/<%= data.id %>" method="post">
+          <div class="form-group">
+            <input
+              value="<%= data.nombre %>"
+              type="text"
+              name="nombre"
+              placeholder="nombre"
+              class="form-control"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              value="<%= data.direccion %>"
+              type="text"
+              name="direccion"
+              placeholder="direccion"
+              class="form-control"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              value="<%= data.telefono %>"
+              type="text"
+              name="telefono"
+              placeholder="telefono"
+              class="form-control"
+            />
+          </div>
+          <div class="form-group">
+            <input
+              value="<%= data.nombreMascota %>"
+              type="text"
+              name="nombreMascota"
+              placeholder="nombreMascota"
+              class="form-control"
+            />
+          </div>
+
+          <button type="submit" class="btn btn-primary mt-2">
+            Actualizar Cliente
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+<%- include('./partials/footer.ejs'); -%>

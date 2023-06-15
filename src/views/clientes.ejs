@@ -1,0 +1,91 @@
+<%- include('./partials/header'); -%>
+    <div class="container" style="height: 100%;">
+      <div class="row mt-2">
+        <div class="col-md-9">
+          <div class="card text-white border-danger">
+            <div class="card-header">Listado de Clientes</div>
+            <div class="card-body">
+              <table class="table table-hover table-bordered">
+                <thead>
+                  <tr>
+                    <th scope="col">N°</th>
+                    <th scope="col">nombre</th>
+                    <th scope="col">direccion</th>
+                    <th scope="col">telefono</th>
+                    <th scope="col">Mascotas</th>
+                    <th scope="col">Citas</th>
+                    <th scope="col">Opciones</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <% if (data) { %>
+                    <% for (var i = 0; i < data.length; i++) { %>
+                      <tr class="table-active">
+                        <td scope="row"><%= (i+1) %></td>
+                        <td><%= data[i].nombre  %></td>
+                        <td><%= data[i].direccion %></td>
+                        <td><%= data[i].telefono  %></td>
+                        <td><%= data[i].nombreMascota  %></td>
+                        <td><%= data[i].Citas  %></td>
+                        <td scope="col">
+                          <a class="btn btn-danger  m-1" href="/delete/<%= data[i].id %>">Eliminar</a> 
+                          <a class="btn btn-info m-1" href="/upDateCliente/<%= data[i].id %>">Modificar</a>
+                          <a class="btn btn-primary  m-1" href="/asignarCita/<% data[i].id %>">Asignar Cita</a>
+                        </td>
+                      </tr>
+                    <% } %>  
+                  <% } %>  
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-3">
+          <div class="card">
+            <div class="card-header"><h2>Clientes Nuevos</h2></div>
+            <div class="card-body">
+              <form action="/addCliente" method="post">
+                <div class="form-group">
+                  <input
+                    type="text"
+                    name="nombre"
+                    placeholder="nombre"
+                    class="form-control"
+                  />
+                </div>
+                <div class="form-group">
+                  <input
+                    type="text"
+                    name="direccion"
+                    placeholder="direccion"
+                    class="form-control"
+                  />
+                </div>
+                <div class="form-group">
+                  <input
+                    type="text"
+                    name="telefono"
+                    placeholder="telefono"
+                    class="form-control"
+                  />
+                </div>
+                <div class="form-group">
+                  <input
+                    type="text"
+                    name="nombreMascota"
+                    placeholder="nombreMascota"
+                    class="form-control"
+                  />
+                </div>
+
+                <button type="submit" class="btn btn-primary mt-2">
+                  Agregar Cliente
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+                
+      </div>
+    </div>
+    <%- include('./partials/footer.ejs'); -%>
